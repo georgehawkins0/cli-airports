@@ -4,7 +4,7 @@ A command line based application for gathering information on a specific airport
 
 Here are some usage examples:
 
-1. Find **arrivals** to **LHR** (London Heathrow):
+1. Fetch **arrivals** to **LHR** (London Heathrow):
 
         $ airports.py --mode arrivals --airport LHR
 
@@ -16,7 +16,7 @@ Here are some usage examples:
 
         $ airports.py --mode departures --airport DXB --limit 15 --export
 
-3. Find general airport information for **CDG**
+3. Fetch general airport information for **CDG**
 
         $ airports.py --mode info --airport CDG
 
@@ -60,3 +60,6 @@ options:
 
 - airport name search for IATA code
 - Live flight tracker
+
+
+Thx flightradar for making api easily reversable :)
