@@ -14,7 +14,7 @@ Here are some usage examples:
 
     And with export:
 
-        $ flights.py --mode departures --airport DXB --limit 15 --export True
+        $ flights.py --mode departures --airport DXB --limit 15 --export
 
 3. Find general airport information for **CDG**
 
