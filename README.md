@@ -6,19 +6,19 @@ Here are some usage examples:
 
 1. Find **arrivals** to **LHR** (London Heathrow):
 
-        $ flights.py --mode arrivals --airport LHR
+        $ airports.py --mode arrivals --airport LHR
 
 2. Fetch **15 departures** from **DXB**, 
 
-        $ flights.py --mode departures --airport DXB --limit 15
+        $ airports.py --mode departures --airport DXB --limit 15
 
     And with export:
 
-        $ flights.py --mode departures --airport DXB --limit 15 --export
+        $ airports.py --mode departures --airport DXB --limit 15 --export
 
 3. Find general airport information for **CDG**
 
-        $ flights.py --mode info --airport CDG
+        $ airports.py --mode info --airport CDG
 
 ### Table of contents
 
