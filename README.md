@@ -60,6 +60,3 @@ options:
 
 - airport name search for IATA code
 - Live flight tracker
-
-
-Thx flightradar for making api easily reversable :)

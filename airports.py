@@ -26,7 +26,7 @@ def statusConverter(status):
         return "Departed"
 
 def apiReq(airport,arrivalsOrDepartures,page):
-    headers = {
+    _headers = {
         'authority': 'api.flightradar24.com',
         'pragma': 'no-cache',
         'cache-control': 'no-cache',
@@ -43,7 +43,7 @@ def apiReq(airport,arrivalsOrDepartures,page):
         'accept-language': '',
     }
 
-    params = (
+    _params = (
         ('code', airport),
         ('plugin/[/]', 'schedule'),
         ('plugin-setting/[schedule/]/[mode/]', arrivalsOrDepartures),
@@ -52,7 +52,7 @@ def apiReq(airport,arrivalsOrDepartures,page):
         ('limit', '100'),
         ('token', ''),
     )
-    r = requests.get('https://api.flightradar24.com/common/v1/airport.json', params=params,headers=headers)
+    r = requests.get('https://api.flightradar24.com/common/v1/airport.json', params=_params,headers=_headers)
 
     response = json.loads(r.text) #dict_keys(['result', '_api'])
     return response
