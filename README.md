@@ -20,6 +20,12 @@ Here are some usage examples:
 
         $ airports.py --mode info --airport CDG
 
+4. Find IATA code for  **London Stansted**
+
+        $ airports.py --name "London Stansted"
+
+        Note, " is required either side for a search with more than one word.
+
 ### Table of contents
 
 - [Installation](#installation)
@@ -43,7 +49,7 @@ $ cd cli-airports
 ### Usage
 #### Cmdline options
 ```
-usage: airports.py [-h] -m MODE -a AIRPORT [-l LIMIT] [-e]
+usage: airports.py [-h] [-m MODE] [-a AIRPORT] [-l LIMIT] [-n NAME] [-e]
 
 Information about any airport from all over the world.
 
@@ -54,10 +60,13 @@ options:
                         The IATA airport code
   -l LIMIT, --limit LIMIT
                         Limit to show (default 10, max for all)
+  -n NAME, --name NAME  Search for an airport name. Returns airports with a matching name. Useful for finding IATA
+                        code.
   -e, --export          save results in a JSON file
+
 ```
 
 ## To-do
 
-- airport name search for IATA code
+- ~~airport name search for IATA code~~ Done v1.0.1
 - Live flight tracker

@@ -269,18 +269,47 @@ def getWeather(airportCode):
     for stat in weatherData:
         print(f"{stat}: {weatherData[stat]}")
 
+def getResults(name):
+    headers = {
+        'authority': 'www.flightradar24.com',
+        'pragma': 'no-cache',
+        'cache-control': 'no-cache',
+        'sec-ch-ua': '',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': '',
+        'sec-ch-ua-platform': '"Windows"',
+        'accept': '*/*',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        'referer': 'https://www.flightradar24.com/',
+        'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+        'cookie': ''
+        }
+
+    params = (
+        ('query', name),
+        ('limit', '50'),
+    )
+
+    response = requests.get('https://www.flightradar24.com/v1/search/web/find', headers=headers, params=params)
+
+    result = response.json()
+
+    return result
 
 parser = argparse.ArgumentParser(description="Information about any airport from all over the world.")
 
-parser.add_argument('-m', '--mode', type=str, default=None, help="Mode (arrivals/departures/weather/info)", required=True)
-parser.add_argument('-a', '--airport', type=str, default=None, help="The IATA airport code", required=True)
+parser.add_argument('-m', '--mode', type=str, default=None, help="Mode (arrivals/departures/weather/info)")
+parser.add_argument('-a', '--airport', type=str, default=None, help="The IATA airport code")
 parser.add_argument('-l', '--limit', type=str, default="10", help="Limit to show (default 10, max for all)")
+parser.add_argument('-n', '--name', type=str, default=None, help="Search for an airport name. Returns airports with a matching name. Useful for finding IATA code.")
 parser.add_argument('-e', '--export', help='save results in a JSON file', action='store_true')
 
 
 if __name__ == "__main__":
     helpMessage = """Flights.py\nInformation about airports all over the world.
-    Positional Arguments: 
+    Arguments: 
     --mode
 
         arrivals: finds all the available arrivals to a given airport. To specify how many results to show, use the --limit argument.
@@ -293,7 +322,9 @@ if __name__ == "__main__":
 
         A valid IATA airport code.
 
-    Optional Arguments:
+
+    --name Search for an airport name. Returns airports with a matching name. Useful for finding IATA code
+
 
     --limit
 
@@ -336,6 +367,15 @@ if __name__ == "__main__":
                 generalAirportInfo(args.airport)
             else:
                 raise SyntaxError("No airport IATA code given")
+
+        elif args.name:
+            result = getResults(args.name)
+            if len(result["results"]) !=0:
+                print(f"Displaying search results for search query {args.name}")
+                for item in result["results"]:
+                    print(item["label"])
+            else:
+                print("No results found.")
                 
         else:
             raise ValueError(f"Invalid mode \"{args.mode}\"")
