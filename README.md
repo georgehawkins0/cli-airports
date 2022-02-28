@@ -68,5 +68,5 @@ options:
 
 ## To-do
 
-- ~~airport name search for IATA code~~ Done v1.0.1
+- ~~airport name search for IATA code~~ Done v1.1
 - Live flight tracker
