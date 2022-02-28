@@ -24,7 +24,8 @@ Here are some usage examples:
 
         $ airports.py --name "London Stansted"
 
-        Note, " is required either side for a search with more than one word.
+
+      *Note, " is required either side for a search with more than one word.*
 
 ### Table of contents
 
